@@ -3,7 +3,7 @@ package com.codeblast.hellodagger1;
 import dagger.Module;
 import dagger.Provides;
 
-@Module(injects = {MainActivity.class}, includes = {RootModule.class})
+@Module(injects = {MainActivity.class}, addsTo = RootModule.class)
 public class HelloModule {
 
   private final MainActivity activity;

@@ -18,13 +18,9 @@ public class MainActivity extends Activity implements HelloView {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    ObjectGraph objectGraph = ObjectGraph.create(
-        new RootModule(this),
-        new HelloModule(this));
+    ObjectGraph parentObjectGraph = ((MyApplication) getApplication()).getObjectGraph();
+    ObjectGraph objectGraph = parentObjectGraph.plus(new HelloModule(this));
     objectGraph.inject(this);
-
-    MessageSupplier supplier = new MessageSupplierImpl(new TimeServiceImpl());
-    presenter = new HelloPresenterImpl(this, supplier);
   }
 
   @Override
