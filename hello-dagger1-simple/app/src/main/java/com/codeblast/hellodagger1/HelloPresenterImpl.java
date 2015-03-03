@@ -1,9 +1,12 @@
 package com.codeblast.hellodagger1;
 
+import javax.inject.Inject;
+
 public class HelloPresenterImpl implements HelloPresenter {
   private final HelloView view;
   private final MessageSupplier messageSupplier;
 
+  @Inject
   public HelloPresenterImpl(HelloView view, MessageSupplier messageSupplier) {
     this.view = view;
     this.messageSupplier = messageSupplier;

@@ -1,9 +1,12 @@
 package com.codeblast.hellodagger1;
 
+import javax.inject.Inject;
+
 public class MessageSupplierImpl implements MessageSupplier {
 
   private final TimeService timeService;
 
+  @Inject
   public MessageSupplierImpl(TimeService timeService) {
     this.timeService = timeService;
   }
