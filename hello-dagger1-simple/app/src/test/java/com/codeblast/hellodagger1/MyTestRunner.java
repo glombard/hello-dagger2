@@ -1,3 +1,5 @@
+package com.codeblast.hellodagger1;
+
 import android.app.Activity;
 
 import org.junit.runners.model.InitializationError;
