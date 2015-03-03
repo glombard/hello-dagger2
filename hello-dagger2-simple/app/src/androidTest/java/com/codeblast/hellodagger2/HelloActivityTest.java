@@ -17,7 +17,7 @@ public class HelloActivityTest extends ActivityUnitTestCase<HelloActivity> {
   HelloActivity activity;
 
   @Inject
-  private HelloPresenter presenter;
+  HelloPresenter presenter;
 
   public HelloActivityTest() {
     super(HelloActivity.class);
