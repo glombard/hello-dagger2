@@ -4,27 +4,29 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class MainActivity extends Activity implements HelloView {
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-  HelloPresenter presenter;
+public class MainActivity extends Activity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-
-    MessageSupplier supplier = new MessageSupplierImpl(new TimeServiceImpl());
-    presenter = new HelloPresenterImpl(this, supplier);
   }
 
   @Override
   protected void onPostResume() {
     super.onPostResume();
-    presenter.requestMessage();
-  }
-
-  @Override
-  public void onMessageUpdated(String message) {
-    ((TextView) findViewById(R.id.message)).setText(message);
+      final int hour = new GregorianCalendar().get(Calendar.HOUR_OF_DAY);
+      final String partOfDay;
+      if (hour < 12)
+          partOfDay = "morning";
+      else if (hour >= 17)
+          partOfDay = "evening";
+      else
+          partOfDay = "afternoon";
+      final String message = "Good " + partOfDay + ", Dagger 1.2!";
+      ((TextView) findViewById(R.id.message)).setText(message);
   }
 }
